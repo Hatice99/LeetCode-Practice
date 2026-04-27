@@ -1,0 +1,21 @@
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        //repeated lookup based on key and value -> HashMap for efficiency
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        
+        for(int i=0; i<nums.length; i++){
+
+            if(map.containsKey(nums[i]) && (Math.abs(i-map.get(nums[i])) <=k)){
+                return true;
+            }
+            else{
+                map.put(nums[i], i);
+            }
+        }
+        return false;
+
+
+
+        
+    }
+}
