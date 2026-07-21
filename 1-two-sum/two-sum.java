@@ -5,16 +5,10 @@ class Solution {
         for(int i=0; i<nums.length; i++){
             int rest = target - nums[i];
 
-            if(map.containsValue(rest)){
-                int key = 0;
-                for(Integer k: map.keySet()){
-                    if(map.get(k) == rest){
-                        key = k;
-                    }
-                }
-                return new int[] {i,key};
+            if(map.containsKey(rest)){
+                return new int[] {i,map.get(rest)};
             }
-            else map.put(i, nums[i]);
+            else map.put(nums[i], i);
         }
         return new int[]{};
                      
