@@ -1,19 +1,24 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        //repeated operation: lookup -> use hashmap for efficieny
-
-        Map<Integer, Integer> map_of_nums = new HashMap<>();
-        int first_element = nums[0];
+        Map <Integer, Integer> map = new HashMap<>();
 
         for(int i=0; i<nums.length; i++){
-            int rest = target-nums[i];
-            if(map_of_nums.containsKey(rest)){
-                return new int[]{i, map_of_nums.get(rest)};
-            }
-            map_of_nums.put(nums[i],i);
+            int rest = target - nums[i];
 
+            if(map.containsValue(rest)){
+                int key = 0;
+                for(Integer k: map.keySet()){
+                    if(map.get(k) == rest){
+                        key = k;
+                    }
+                }
+                return new int[] {i,key};
+            }
+            else map.put(i, nums[i]);
         }
         return new int[]{};
+                     
+
         
     }
 }
