@@ -5,4 +5,4 @@ FROM Employee e1
 INNER JOIN Employee e2
 ON e1.id = e2.managerId
 GROUP BY e2.managerId
-HAVING COUNT(e2.managerId)>4;
+HAVING COUNT(e2.id)>4;
